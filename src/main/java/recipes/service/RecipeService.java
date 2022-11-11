@@ -8,16 +8,18 @@ import java.util.LinkedList;
 import java.util.List;
 
 import recipes.dao.RecipeDao;
+import recipes.entity.Recipe;
 import recipes.exception.DbException;
 
 public class RecipeService {
 	private static final String SCHEMA_FILE = "recipe_schema.sql";
+	private static final String DATA_FILE ="recipe_data.sql";
 	
 	private RecipeDao recipeDao = new RecipeDao();
 	
 	public void createAndPopulateTables() {
 		loadFromFile(SCHEMA_FILE);
-		
+		loadFromFile(DATA_FILE);
 	}
 
 	private void loadFromFile(String fileName) {
@@ -84,6 +86,10 @@ public class RecipeService {
 		} catch (Exception e) {
 			throw new DbException(e);
 		}
+	}
+	public Recipe addRecipe(Recipe recipe) {
+		// TODO Auto-generated method stub
+		return recipeDao.insertRecipe(recipe);
 	}
 	
 	

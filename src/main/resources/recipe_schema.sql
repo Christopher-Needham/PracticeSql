@@ -9,7 +9,7 @@ CREATE TABLE recipe (
 	recipe_id INT AUTO_INCREMENT NOT NULL,
 	recipe_name VARCHAR(128) NOT NULL,
 	notes TEXT,
-	num_servingsd INT,
+	num_servings INT,
 	prep_time TIME,
 	cook_time TIME,
 	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -48,8 +48,9 @@ CREATE TABLE step (
 
 CREATE TABLE ingredient(
 	ingredient_id INT AUTO_INCREMENT NOT NULL,
+	instruction TEXT,
 	recipe_id INT NOT NULL,
-	unit_id INT NOT NULL,
+	unit_id INT,
 	ingredient_name VARCHAR(64),
 	ingredient_order INT NOT NULL,
 	amount DECIMAL(7,2),
